@@ -25,6 +25,10 @@ export async function GET(
                 images(first: 5) {
                   edges { node { src altText width height } }
                 }
+                options {
+                  name
+                  values
+                }
                 variants(first: 10) {
                   edges {
                     node {
@@ -32,6 +36,10 @@ export async function GET(
                       title
                       price { amount currencyCode }
                       availableForSale
+                      selectedOptions {
+                        name
+                        value
+                      }
                     }
                   }
                 }
@@ -74,6 +82,7 @@ export async function GET(
             title: string;
             price: { amount: string; currencyCode: string };
             availableForSale: string;
+            selectedOptions: { name: string; value: string }[];
           };
         }) => v.node
       ),

@@ -16,7 +16,7 @@ const images = [
   { src: "/images/Others.png", alt: "Outros", href: "/products" },
 ];
 
-const CARD_WIDTH = 230;
+const CARD_WIDTH = 190;
 
 export default function Cat() {
   const [mounted, setMounted] = useState(false);
@@ -80,7 +80,7 @@ export default function Cat() {
         </Text>
       </Section>
       <Section>
-        <div className="relative">
+        <div className="relative ">
           <Button
             onClick={() => setIndex((i) => i - 1)}
             className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow flex items-center justify-center text-2xl"

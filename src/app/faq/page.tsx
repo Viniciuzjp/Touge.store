@@ -2,7 +2,7 @@ import StaticPage from "@/components/static-page/StaticPage";
 import { Text } from "@/components/text/Text";
 
 export const metadata = {
-  title: "Perguntas Frequentes | Hygg",
+  title: "Perguntas Frequentes | Touge",
 };
 
 const FAQS = [

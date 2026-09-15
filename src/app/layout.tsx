@@ -13,8 +13,8 @@ import Script from "next/script";
 import { CartProvider } from "@/app/Cart/ui/CartContext/Context";
 
 export const metadata: Metadata = {
-  title: "Shopcase",
-  description: "Loja online",
+  title: "Touge",
+  description: "Touge — camisetas oversized inspiradas na cultura automotiva.",
 };
 
 export default function RootLayout({

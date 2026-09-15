@@ -5,7 +5,7 @@ import ProductCard from "@/design-system/layout/ProductCard";
 import { getProducts } from "@/lib/shopify";
 
 export const metadata = {
-  title: "Mais Vendidos | Hygg",
+  title: "Mais Vendidos | Touge",
 };
 
 export default async function BestsellersPage() {

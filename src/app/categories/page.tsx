@@ -5,7 +5,7 @@ import ProductCard from "@/design-system/layout/ProductCard";
 import { getProducts } from "@/lib/shopify";
 
 export const metadata = {
-  title: "Categorias | Hygg",
+  title: "Categorias | Touge",
 };
 
 export default async function CategoriesPage() {

@@ -5,7 +5,7 @@ import ProductCard from "@/design-system/layout/ProductCard";
 import { getProducts } from "@/lib/shopify";
 
 export const metadata = {
-  title: "Ofertas | Hygg",
+  title: "Ofertas | Touge",
 };
 
 export default async function DealsPage() {

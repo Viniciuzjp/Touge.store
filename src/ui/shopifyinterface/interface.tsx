@@ -5,6 +5,11 @@ interface ImageType {
   height: number;
 }
 
+interface SelectedOption {
+  name: string;
+  value: string;
+}
+
 interface Variant {
   id: string;
   title: string;
@@ -13,6 +18,12 @@ interface Variant {
     currencyCode: string;
   };
   availableForSale: boolean;
+  selectedOptions: SelectedOption[];
+}
+
+interface ProductOption {
+  name: string;
+  values: string[];
 }
 
 type Products = {
@@ -22,6 +33,7 @@ type Products = {
   descriptionHtml: string;
   images: ImageType[];
   variants: Variant[];
+  options: ProductOption[];
 };
 
-export type { ImageType, Variant, Products };
+export type { ImageType, Variant, Products, ProductOption, SelectedOption };

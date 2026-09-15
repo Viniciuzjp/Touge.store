@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/app/Cart/ui/CartContext/Context";
 import Button from "@/components/button/Button";
@@ -20,6 +20,7 @@ export default function ProductPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
 
   useEffect(() => {
     if (!id) {
@@ -37,6 +38,14 @@ export default function ProductPage() {
 
         const data: Products = await response.json();
         setProduct(data);
+
+        const initialVariant =
+          data.variants.find((v) => v.availableForSale) || data.variants[0];
+        const initialOptions: Record<string, string> = {};
+        initialVariant?.selectedOptions.forEach((opt) => {
+          initialOptions[opt.name] = opt.value;
+        });
+        setSelectedOptions(initialOptions);
       } catch (err) {
         console.error(err);
         setError("Erro ao buscar produto");
@@ -48,7 +57,31 @@ export default function ProductPage() {
     fetchProduct();
   }, [id]);
 
-  const variant = product?.variants[0];
+  // Options with a single possible value (e.g. Shopify's synthetic "Title"
+  // option on single-variant products) aren't shown as a choice — there's
+  // nothing for the customer to pick.
+  const selectableOptions = useMemo(
+    () => product?.options.filter((opt) => opt.values.length > 1) ?? [],
+    [product]
+  );
+
+  const variant = useMemo(() => {
+    if (!product) return undefined;
+    return (
+      product.variants.find((v) =>
+        v.selectedOptions.every((opt) => selectedOptions[opt.name] === opt.value)
+      ) ?? product.variants[0]
+    );
+  }, [product, selectedOptions]);
+
+  function isValueAvailable(optionName: string, value: string) {
+    if (!product) return false;
+    const candidate = { ...selectedOptions, [optionName]: value };
+    const match = product.variants.find((v) =>
+      v.selectedOptions.every((opt) => candidate[opt.name] === opt.value)
+    );
+    return match?.availableForSale ?? false;
+  }
 
   const handleAddToCart = () => {
     if (!product || !variant || !variant.availableForSale) return;
@@ -139,6 +172,38 @@ export default function ProductPage() {
                     ? formatPrice(variant.price.amount, variant.price.currencyCode)
                     : "Indisponível"}
                 </Text>
+
+                {selectableOptions.map((option) => (
+                  <Stack key={option.name} classname="gap-2">
+                    <Text variant="label">{option.name}</Text>
+                    <Flex className="flex-wrap gap-2">
+                      {option.values.map((value) => {
+                        const isSelected = selectedOptions[option.name] === value;
+                        const available = isValueAvailable(option.name, value);
+                        return (
+                          <button
+                            key={value}
+                            type="button"
+                            onClick={() =>
+                              setSelectedOptions((prev) => ({
+                                ...prev,
+                                [option.name]: value,
+                              }))
+                            }
+                            className={`min-w-11 rounded-md border px-3 py-2 text-sm transition-colors ${
+                              isSelected
+                                ? "border-neutral-900 bg-neutral-900 text-white"
+                                : "border-neutral-300 text-neutral-800 hover:border-neutral-500"
+                            } ${!available ? "opacity-40" : ""}`}
+                          >
+                            {value}
+                            {!available && " (esgotado)"}
+                          </button>
+                        );
+                      })}
+                    </Flex>
+                  </Stack>
+                ))}
 
                 <Button
                   onClick={handleAddToCart}

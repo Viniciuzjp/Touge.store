@@ -2,7 +2,7 @@ import StaticPage from "@/components/static-page/StaticPage";
 import { Text } from "@/components/text/Text";
 
 export const metadata = {
-  title: "Contato | Hygg",
+  title: "Contato | Touge",
 };
 
 export default function ContactPage() {

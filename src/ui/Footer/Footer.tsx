@@ -9,12 +9,12 @@ export default function Footer() {
         <Container size="xl">
           <Grid classname="grid-cols-1 md:grid-cols-4" gap="lg">
             <Stack>
-              <Text variant="h2">Hygg</Text>
+              <Text variant="h2">Touge</Text>
               <Text variant="bodySm" classname="text-gray-600">
-                Apresentendo o Hygg, uma plataforma de e-commerce que oferece
+                Apresentendo o Touge, uma plataforma de e-commerce que oferece
                 uma experiência de compra online excepcional. Com uma ampla
                 variedade de produtos, uma navegação intuitiva e uma experiência
-                de compra rápida e fácil, o Hygg torna a compra online uma
+                de compra rápida e fácil, o Touge torna a compra online uma
                 experiência agradável e conveniente.
               </Text>
             </Stack>
@@ -128,8 +128,8 @@ export default function Footer() {
 
           <div className="border-t border-gray-300 mt-12 pt-8 text-center">
             <Text variant="bodySm">
-              © {new Date().getFullYear()} Hygg. todos os direitos são
-              unicamente e exclusivamente reservados por WebHygg Inc. Todos os
+              © {new Date().getFullYear()} Touge. todos os direitos são
+              unicamente e exclusivamente reservados por WebTouge Inc. Todos os
               direitos de imagem e marca registrada pertencem aos seus
               respectivos donos.
             </Text>

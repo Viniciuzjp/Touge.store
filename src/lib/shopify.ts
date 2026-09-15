@@ -5,6 +5,11 @@ interface Image {
   height: number;
 }
 
+interface SelectedOption {
+  name: string;
+  value: string;
+}
+
 interface Variant {
   id: string;
   title: string;
@@ -13,6 +18,12 @@ interface Variant {
     currencyCode: string;
   };
   availableForSale: boolean;
+  selectedOptions: SelectedOption[];
+}
+
+interface ProductOption {
+  name: string;
+  values: string[];
 }
 
 export interface Product {
@@ -22,6 +33,7 @@ export interface Product {
   descriptionHtml: string;
   images: Image[];
   variants: Variant[];
+  options: ProductOption[];
 }
 
 interface ProductEdge {
@@ -36,10 +48,30 @@ interface ProductEdge {
     variants: {
       edges: { node: Variant }[];
     };
+    options: ProductOption[];
   };
 }
 
-export async function getProducts(first: number = 50): Promise<Product[]> {
+type ProductsSortKey =
+  | "RELEVANCE"
+  | "CREATED_AT"
+  | "BEST_SELLING"
+  | "PRICE"
+  | "TITLE"
+  | "ID"
+  | "PRODUCT_TYPE"
+  | "VENDOR"
+  | "UPDATED_AT";
+
+interface GetProductsOptions {
+  sortKey?: ProductsSortKey;
+  reverse?: boolean;
+}
+
+export async function getProducts(
+  first: number = 50,
+  { sortKey, reverse }: GetProductsOptions = {}
+): Promise<Product[]> {
   try {
     const response = await fetch(
       `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,
@@ -53,7 +85,11 @@ export async function getProducts(first: number = 50): Promise<Product[]> {
         body: JSON.stringify({
           query: `
           {
-            products(first: ${first}) {
+            products(
+              first: ${first}
+              ${sortKey ? `sortKey: ${sortKey}` : ""}
+              ${reverse ? `reverse: true` : ""}
+            ) {
               edges {
                 node {
                   id
@@ -70,6 +106,10 @@ export async function getProducts(first: number = 50): Promise<Product[]> {
                       }
                     }
                   }
+                  options {
+                    name
+                    values
+                  }
                   variants(first: 10) {
                     edges {
                       node {
@@ -80,6 +120,10 @@ export async function getProducts(first: number = 50): Promise<Product[]> {
                           currencyCode
                         }
                         availableForSale
+                        selectedOptions {
+                          name
+                          value
+                        }
                       }
                     }
                   }
@@ -107,6 +151,7 @@ export async function getProducts(first: number = 50): Promise<Product[]> {
         descriptionHtml: node.descriptionHtml || "",
         images: node.images.edges.map((img) => img.node),
         variants: node.variants.edges.map((v) => v.node),
+        options: node.options,
       })
     );
 

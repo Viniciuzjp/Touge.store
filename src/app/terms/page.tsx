@@ -2,7 +2,7 @@ import StaticPage from "@/components/static-page/StaticPage";
 import { Text } from "@/components/text/Text";
 
 export const metadata = {
-  title: "Termos e Condições | Hygg",
+  title: "Termos e Condições | Touge",
 };
 
 export default function TermsPage() {
@@ -12,7 +12,7 @@ export default function TermsPage() {
       subtitle="Última atualização: a definir"
     >
       <Text variant="body">
-        Ao utilizar o site da Hygg e realizar uma compra, você concorda com
+        Ao utilizar o site da Touge e realizar uma compra, você concorda com
         os termos descritos abaixo.
       </Text>
       <Text variant="body">
@@ -22,7 +22,7 @@ export default function TermsPage() {
       </Text>
       <Text variant="body">
         O pagamento e o processamento do pedido são realizados pela Shopify.
-        A Hygg não armazena dados completos de cartão de crédito em seus
+        A Touge não armazena dados completos de cartão de crédito em seus
         próprios servidores.
       </Text>
       <Text variant="body">

@@ -2,7 +2,7 @@ import StaticPage from "@/components/static-page/StaticPage";
 import { Text } from "@/components/text/Text";
 
 export const metadata = {
-  title: "Política de Privacidade | Hygg",
+  title: "Política de Privacidade | Touge",
 };
 
 export default function PrivacyPage() {

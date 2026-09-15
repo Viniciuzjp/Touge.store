@@ -11,7 +11,7 @@ export default function Header() {
       <header className="sticky top-0 w-full z-10 px-5 py-4 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200">
         <Flex align="center" justify="between">
           <Text variant="h2">
-            <Link href="/">Hygg</Link>
+            <Link href="/">Touge</Link>
           </Text>
 
           <Flex justify="between" align="center" gap="sm">

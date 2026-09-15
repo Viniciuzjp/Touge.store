@@ -7,7 +7,10 @@ import { Container, Flex, Grid, Section, Stack } from "@av-digital/components";
 import ProductCard from "@/design-system/layout/ProductCard";
 
 export default async function Releases() {
-  const datashopify: Products[] = await getProducts(50);
+  const datashopify: Products[] = await getProducts(50, {
+    sortKey: "CREATED_AT",
+    reverse: true,
+  });
   return (
     <>
       <Section spacing="lg">
@@ -30,11 +33,10 @@ export default async function Releases() {
           <div className="max-lg:hidden">
             <Flex justify="between" className="mb-15">
               <Stack>
-                <Text variant="bodyLg">Seleção Especial</Text>
-                <Text variant="h2">Ofertas em Destaque</Text>
+                <Text variant="bodyLg">Recém-chegados</Text>
+                <Text variant="h2">Lançamentos</Text>
                 <Text variant="bodyLg">
-                  Descubra nossa curadoria de produtos com as melhores ofertas
-                  do momento.
+                  As últimas camisetas a chegar na coleção, direto do forno.
                 </Text>
               </Stack>
               <Link

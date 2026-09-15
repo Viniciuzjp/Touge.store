@@ -2,7 +2,7 @@ import StaticPage from "@/components/static-page/StaticPage";
 import { Text } from "@/components/text/Text";
 
 export const metadata = {
-  title: "Trocas e Devoluções | Hygg",
+  title: "Trocas e Devoluções | Touge",
 };
 
 export default function ReturnsPage() {

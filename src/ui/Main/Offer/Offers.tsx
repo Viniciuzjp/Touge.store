@@ -9,6 +9,11 @@ import ProductCard from "@/design-system/layout/ProductCard";
 export default async function OffersSection() {
   const datashopify: Products[] = await getProducts(50);
 
+  // Acrescentar conforme as vendas
+  //   const datashopify: Products[] = await getProducts(50, {
+  //   sortKey: "BEST_SELLING",
+  // });
+
   return (
     <Section spacing="lg">
       <Stack gap="lg">

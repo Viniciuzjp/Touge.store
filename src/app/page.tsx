@@ -1,4 +1,4 @@
-import Cat from "@/ui/Main/Cat/Cat";
+import Cat from "@/ui/Main/Category/Category";
 import Hero from "@/ui/Main/Hero/Hero";
 import Info from "@/ui/Main/Info/Info";
 import Offer from "@/ui/Main/Offer/Offers";
