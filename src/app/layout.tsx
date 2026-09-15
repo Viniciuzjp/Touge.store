@@ -4,6 +4,7 @@ import "./globals.css";
 import "@av-digital/components/styles";
 import Footer from "@/ui/Footer/Footer";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
         <CartProvider>
           <Header />
           {children}
+          <SpeedInsights />
           <Footer />
         </CartProvider>
       </body>
