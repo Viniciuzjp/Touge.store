@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Text } from "@/components/text/Text";
 import { Container, Grid, Stack } from "@av-digital/components";
 
@@ -9,7 +10,16 @@ export default function Footer() {
         <Container size="xl">
           <Grid classname="grid-cols-1 md:grid-cols-4" gap="lg">
             <Stack>
-              <Text variant="h2">Touge</Text>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Touge"
+                  width={1828}
+                  height={860}
+                  priority
+                  className="h-10 w-auto"
+                />
+              </Link>
               <Text variant="bodySm" classname="text-gray-600">
                 Apresentendo o Touge, uma plataforma de e-commerce que oferece
                 uma experiência de compra online excepcional. Com uma ampla

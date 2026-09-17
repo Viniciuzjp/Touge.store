@@ -5,6 +5,7 @@ import Offer from "@/ui/Main/Offer/Offers";
 import ProductsSkeleton from "@/design-system/layout/ProductsSkeleton";
 import Releases from "@/ui/Main/Release/Release";
 import Send from "@/ui/Main/Send/Send";
+import VideoBanner from "@/ui/Main/VideoBanner/VideoBanner";
 import { Suspense } from "react";
 import { Container } from "@av-digital/components";
 
@@ -25,6 +26,7 @@ export default function Home() {
         <Suspense fallback={<ProductsSkeleton />}>
           <Releases />
         </Suspense>
+        <VideoBanner />
         <Send />
       </main>
     </>

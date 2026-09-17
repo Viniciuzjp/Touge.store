@@ -1,18 +1,26 @@
 "use client";
 
-import { Flex } from "@av-digital/components";
-import { Text } from "@/components/text/Text";
+import { Flex, Stack } from "@av-digital/components";
 import { Heart, ShoppingCart, User, Wallet } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import Dropdown from "@/components/dropdown/Dropdown";
 
 export default function Header() {
   return (
     <>
       <header className="sticky top-0 w-full z-10 px-5 py-4 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200">
         <Flex align="center" justify="between">
-          <Text variant="h2">
-            <Link href="/">Touge</Link>
-          </Text>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo.png"
+              alt="Touge"
+              width={1828}
+              height={860}
+              priority
+              className="h-10 w-auto"
+            />
+          </Link>
 
           <Flex justify="between" align="center" gap="sm">
             <Link
@@ -21,6 +29,9 @@ export default function Header() {
             >
               Produtos
             </Link>
+            <Stack>
+              <Dropdown></Dropdown>
+            </Stack>
           </Flex>
 
           <Flex justify="center" align="center" gap="sm">
