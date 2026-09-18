@@ -13,9 +13,9 @@ export const Typography = {
    * HEADINGS
    * =========================== */
 
-  h1: "text-4xl font-semibold leading-tight",
+  h1: "text-5xl font-semibold leading-tight",
 
-  h2: "text-3xl font-semibold leading-tight",
+  h2: "text-4xl font-extrabold leading-tight",
 
   h3: "text-2xl font-semibold leading-snug",
 

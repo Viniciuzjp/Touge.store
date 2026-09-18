@@ -27,7 +27,7 @@ export default function Category() {
       <Flex justify="between">
         <Stack>
           <Text variant="bodyLg">Seleção Especial</Text>
-          <Text variant="h2">Categorias</Text>
+          <Text variant="h2">CATEGORIAS</Text>
           <Text variant="bodyLg">
             Fique de olho e observe de perto um catálogo diverso de novidades
           </Text>

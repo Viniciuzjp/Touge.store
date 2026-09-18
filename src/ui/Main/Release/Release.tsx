@@ -34,7 +34,7 @@ export default async function Releases() {
             <Flex justify="between" className="mb-15">
               <Stack>
                 <Text variant="bodyLg">Recém-chegados</Text>
-                <Text variant="h2">Lançamentos</Text>
+                <Text variant="h2">LANÇAMENTOS</Text>
                 <Text variant="bodyLg">
                   As últimas camisetas a chegar na coleção, direto do forno.
                 </Text>

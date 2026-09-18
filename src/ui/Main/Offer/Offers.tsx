@@ -7,7 +7,7 @@ import { Flex, Grid, Section, Stack, Container } from "@av-digital/components";
 import ProductCard from "@/design-system/layout/ProductCard";
 
 export default async function OffersSection() {
-  const datashopify: Products[] = await getProducts(50);
+  const datashopify: Products[] = await getProducts(8);
 
   // Acrescentar conforme as vendas
   //   const datashopify: Products[] = await getProducts(50, {
@@ -36,7 +36,7 @@ export default async function OffersSection() {
             <Flex justify="between" className="mb-15">
               <Stack>
                 <Text variant="bodyLg">Seleção Especial</Text>
-                <Text variant="h2">Ofertas em Destaque</Text>
+                <Text variant="h2">OFERTAS EM DESTAQUE</Text>
                 <Text variant="bodyLg">
                   Descubra nossa curadoria de produtos com as melhores ofertas
                   do momento.
