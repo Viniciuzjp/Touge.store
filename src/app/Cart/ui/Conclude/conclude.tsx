@@ -8,7 +8,7 @@ import { formatPrice } from "@/lib/currency";
 import { TriangleAlert } from "lucide-react";
 
 export default function CartProduct() {
-  const { cart, total } = useCart();
+  const { cart, total, handleDeleteProduct } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -32,9 +32,22 @@ export default function CartProduct() {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Erro no servidor:", response.status, errorText);
-        alert(`Erro ao iniciar checkout (${response.status}). Verifique o console da API.`);
+        const data = await response.json().catch(() => null);
+        console.error("Erro no servidor:", response.status, data);
+
+        if (data?.invalidLineIndexes?.length) {
+          data.invalidLineIndexes.forEach((index: number) => {
+            const invalidItem = cart[index];
+            if (invalidItem) handleDeleteProduct(invalidItem.id);
+          });
+          alert(
+            "Alguns itens do seu carrinho não estão mais disponíveis e foram removidos. Revise seu carrinho e tente novamente."
+          );
+        } else {
+          alert(
+            data?.error || `Erro ao iniciar checkout (${response.status}).`
+          );
+        }
         return;
       }
 

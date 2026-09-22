@@ -70,7 +70,26 @@ export async function POST(req: Request) {
     const userErrors = data.data?.cartCreate?.userErrors;
     if (userErrors && userErrors.length > 0) {
       console.error("Erros de validação da Shopify:", userErrors);
-      return NextResponse.json({ error: userErrors }, { status: 400 });
+
+      // "field" comes back as ["input", "lines", "<index>", "merchandiseId"]
+      // for a bad line item — pull the index out so the client can drop
+      // exactly that item from the cart instead of failing opaquely.
+      const invalidLineIndexes = userErrors
+        .map((e: { field?: string[] }) => {
+          const index = e.field?.[1] === "lines" ? Number(e.field[2]) : NaN;
+          return Number.isInteger(index) ? index : null;
+        })
+        .filter((index: number | null): index is number => index !== null);
+
+      return NextResponse.json(
+        {
+          error: userErrors
+            .map((e: { message: string }) => e.message)
+            .join(" "),
+          invalidLineIndexes,
+        },
+        { status: 400 }
+      );
     }
 
     const checkoutUrl = data.data?.cartCreate?.cart?.checkoutUrl;
