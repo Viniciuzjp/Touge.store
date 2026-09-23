@@ -15,12 +15,12 @@ export default function ProductCard({ product }: Props) {
   const variant = product.variants[0];
 
   return (
-    <Card className="group overflow-hidden bg-white border border-neutral-200 transition-colors hover:border-neutral-400">
+    <div className="group bg-white transition-colors ">
       <Link
         href={`/produtos/${encodeURIComponent(product.id)}`}
-        className="flex flex-col h-full"
+        className="flex flex-col h-full mb-10"
       >
-        <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
+        <div className="relative aspect-[10/10] overflow-hidden bg-neutral-100">
           <Image
             src={image?.src || "/placeholder.svg"}
             alt={image?.altText || product.title}
@@ -30,10 +30,9 @@ export default function ProductCard({ product }: Props) {
           />
         </div>
 
-        <Stack spacing="xs" align="start" className="px-4 py-5">
+        <Stack spacing="xs" align="start" className="py-5">
           <Text
             variant="productTitle"
-            classname="line-clamp-2 text-[15px] font-normal leading-snug text-neutral-800"
           >
             {product.title}
           </Text>
@@ -48,6 +47,6 @@ export default function ProductCard({ product }: Props) {
           </Text>
         </Stack>
       </Link>
-    </Card>
+    </div>
   );
 }

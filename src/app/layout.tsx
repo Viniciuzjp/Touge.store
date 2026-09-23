@@ -3,11 +3,17 @@ import Header from "@/ui/Header/Header";
 import "./globals.css";
 import "@av-digital/components/styles";
 import Footer from "@/ui/Footer/Footer";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Condensed } from "next/font/google";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ["latin"],
+});
+
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-roboto-condensed",
 });
 
 import Script from "next/script";
@@ -40,7 +46,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${robotoCondensed.variable}`}>
         <CartProvider>
           <Header />
           {children}

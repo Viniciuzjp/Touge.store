@@ -32,10 +32,10 @@ export const Modal = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className=" absolute bg-neutral-900"
+      className=" absolute bg-neutral-950"
     >
       {Vestuario.map((item) => (
-        <div key={item.id} className="p-4 hover:pl-6 hover:bg-neutral-700 transition-all duration-200">
+        <div key={item.id} className="p-4 w-100 hover:pl-6 hover:border-b hover:border-b-neutral-600 hover:bg-neutral-800 transition-all duration-200">
         <Link href={item.href || ""}>
         <Text variant="label">{item.title}</Text>
         </Link>

@@ -14,12 +14,15 @@ export default function Home() {
     <>
       <main className="min-h-screen">
         <Hero />
+        
         <Container size="xl">
           <Info />
         </Container>
+
         <Suspense fallback={<ProductsSkeleton />}>
           <Offer />
         </Suspense>
+
         <Container size="xl">
           <Cat />
         </Container>

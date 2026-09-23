@@ -53,9 +53,9 @@ export default async function Releases() {
           <Container size="xl">
             <Grid
               gap="sm"
-              classname="grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10"
+              classname="grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10"
             >
-              {datashopify.slice(0, 8).map((product) => (
+              {datashopify.slice(0, 6).map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </Grid>

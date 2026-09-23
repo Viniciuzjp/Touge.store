@@ -1,25 +1,30 @@
 "use client";
 
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 const slides = [
   {
-    desktop: "/images/Hero5.webp",
+    desktop: "/images/Hero6.webp",
+    link: "/products",
     mobile: "/images/HeroMB.webp",
     title: "Seleção especial",
   },
   {
-    desktop: "/images/Hero5.webp",
-    mobile: "/images/HeroMB.webp",
+    desktop: "/images/Hero4.png",
+    link: "/products",
+    mobile: "/images/HeroMB2.webp",
     title: "Ver coleção",
   },
   {
-    desktop: "/images/Hero5.webp",
+    desktop: "/images/Hero3.webp",
+    link: "/products",
     mobile: "/images/HeroMB.webp",
     title: "Aproveitar",
   },
@@ -35,27 +40,36 @@ export default function Hero() {
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
-        navigation
+
         loop
         className="w-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcSet={slide.mobile}
-              />
-
-              <img
+            <Link href={slide.link}>
+            <div className="relative hidden w-full aspect-[1584/672] md:block">
+              <Image
                 src={slide.desktop}
                 alt={slide.title}
-                className="block h-auto w-full"
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "auto"}
-                decoding="async"
+                fill
+                quality={95}
+                sizes="100vw"
+                className="object-cover"
+                priority={index === 0}
               />
-            </picture>
+            </div>
+            <div className="relative w-full aspect-[928/1152] md:hidden">
+              <Image
+                src={slide.mobile}
+                alt={slide.title}
+                fill
+                quality={95}
+                sizes="100vw"
+                className="object-cover"
+                priority={index === 0}
+              />
+            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

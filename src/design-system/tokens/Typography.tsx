@@ -3,23 +3,26 @@ export const Typography = {
    * DISPLAY
    * =========================== */
 
-  displayLg: "text-6xl font-semibold leading-none tracking-tight",
+  displayLg:
+    "text-6xl font-semibold leading-none tracking-tight font-[family-name:var(--font-roboto-condensed)]",
 
-  displayMd: "text-5xl font-semibold leading-tight tracking-tight",
+  displayMd:
+    "text-5xl font-semibold leading-tight tracking-tight font-[family-name:var(--font-roboto-condensed)]",
 
-  displaySm: "text-4xl font-semibold leading-tight",
+  displaySm:
+    "text-4xl font-semibold leading-tight font-[family-name:var(--font-roboto-condensed)]",
 
   /* ===========================
    * HEADINGS
    * =========================== */
 
-  h1: "text-5xl font-semibold leading-tight",
+  h1: "text-5xl font-semibold leading-tight font-[family-name:var(--font-roboto-condensed)]",
 
-  h2: "text-4xl font-extrabold leading-tight",
+  h2: "text-4xl font-extrabold leading-tight font-[family-name:var(--font-roboto-condensed)]",
 
-  h3: "text-2xl font-semibold leading-snug",
+  h3: "text-2xl font-semibold leading-snug font-[family-name:var(--font-roboto-condensed)]",
 
-  h4: "text-xl font-semibold leading-snug",
+  h4: "text-xl font-semibold leading-snug font-[family-name:var(--font-roboto-condensed)]",
 
   /* ===========================
    * BODY
@@ -38,7 +41,7 @@ export const Typography = {
    * =========================== */
 
   productTitle:
-    "text-base font-medium leading-snug text-neutral-900 line-clamp-2",
+    "text-base font-bold  text-neutral-900",
 
   productSubtitle:
     "text-sm text-neutral-500 leading-normal",

@@ -33,3 +33,12 @@
   --av-space-6: 1.5rem;  /* 24px */
 
 }
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

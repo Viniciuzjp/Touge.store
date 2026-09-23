@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
       "cdn.shopify.com",
       "embed.figma.com",
     ],
+    qualities: [75, 90, 95],
   },
 
   webpack(config) {
