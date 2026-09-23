@@ -225,8 +225,8 @@ export default function ProductPage() {
               </Stack>
             </Grid>
 
-            <Flex className="mt-15">
-              <Text variant="h2">Você pode gostar</Text>
+            <Flex direction="column" justify="center" align="center" className="mt-15">
+              <Text variant="h2" classname="mb-5">Você pode gostar</Text>
               <Suggestions />
             </Flex>
           </Section>

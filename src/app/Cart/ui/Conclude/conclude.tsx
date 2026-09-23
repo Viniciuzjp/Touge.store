@@ -11,9 +11,7 @@ export default function CartProduct() {
   const { cart, total, handleDeleteProduct } = useCart();
 
   if (cart.length === 0) {
-    return (
-      <></>
-    );
+    return <></>;
   }
 
   async function HandleCheckout() {
@@ -41,11 +39,11 @@ export default function CartProduct() {
             if (invalidItem) handleDeleteProduct(invalidItem.id);
           });
           alert(
-            "Alguns itens do seu carrinho não estão mais disponíveis e foram removidos. Revise seu carrinho e tente novamente."
+            "Alguns itens do seu carrinho não estão mais disponíveis e foram removidos. Revise seu carrinho e tente novamente.",
           );
         } else {
           alert(
-            data?.error || `Erro ao iniciar checkout (${response.status}).`
+            data?.error || `Erro ao iniciar checkout (${response.status}).`,
           );
         }
         return;
@@ -66,30 +64,15 @@ export default function CartProduct() {
 
   return (
     <Flex direction="column" className="w-full mt-10">
-        <Flex justify="between" className="w-full">
-          <Text variant="h3">Total do Carrinho:</Text>
-          <Text variant="productPrice">
-            {formatPrice(total, cart[0]?.currencyCode || "BRL")}
-          </Text>
-        </Flex>
-        <Button onClick={HandleCheckout} className="w-full"><Text variant="bodyLg">Finalizar Compra</Text></Button>
-          <Flex
-            direction="column"
-            gap="xs"
-            className="w-full rounded-md border border-amber-300 bg-amber-50 p-4 mt-4"
-          >
-            <Flex align="center" gap="sm">
-              <TriangleAlert size={18} className="shrink-0 text-amber-700" />
-              <Text variant="label" classname="text-amber-800">
-                Loja em desenvolvimento — senha: 1234
-              </Text>
-            </Flex>
-            <Text variant="bodySm" classname="text-amber-700">
-              Ao digitar a senha você será levado para a home da loja. Volte
-              a esta página e clique em &quot;Finalizar Compra&quot; de
-              novo — o checkout funciona normalmente a partir daqui.
-            </Text>
-          </Flex>
+      <Flex justify="between" className="w-full">
+        <Text variant="h3">Total do Carrinho:</Text>
+        <Text variant="productPrice">
+          {formatPrice(total, cart[0]?.currencyCode || "BRL")}
+        </Text>
+      </Flex>
+      <Button onClick={HandleCheckout} className="w-full">
+        <Text variant="bodyLg">Finalizar Compra</Text>
+      </Button>
     </Flex>
   );
 }
