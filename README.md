@@ -12,7 +12,7 @@ Loja headless construída em **Next.js 16** sobre a **Shopify Storefront API** �
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Shopify](https://img.shields.io/badge/Shopify-Storefront_API-7AB55C?logo=shopify&logoColor=white)](https://shopify.dev/docs/api/storefront)
 
-[Demo](https://web-shopcase-p6b6-git-main-viniciuzjps-projects.vercel.app?_vercel_share=bU8DuVAerAwDTGYgUB12ZMYzP7hk8o6O) · [Reportar um bug](https://github.com/Viniciuzjp/WebShopcase/issues)
+[Demo](www.tougeclub.store/) · [Reportar um bug](https://github.com/Viniciuzjp/WebShopcase/issues)
 
 </div>
 
