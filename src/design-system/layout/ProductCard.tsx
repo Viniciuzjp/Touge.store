@@ -20,7 +20,7 @@ export default function ProductCard({ product }: Props) {
         href={`/produtos/${encodeURIComponent(product.id)}`}
         className="flex flex-col h-full mb-10"
       >
-        <div className="relative aspect-[10/10] overflow-hidden bg-neutral-100">
+        <div className="relative aspect-[8/10] overflow-hidden rounded-md bg-neutral-100">
           <Image
             src={image?.src || "/placeholder.svg"}
             alt={image?.altText || product.title}
@@ -39,7 +39,6 @@ export default function ProductCard({ product }: Props) {
 
           <Text
             variant="productPrice"
-            classname="text-lg font-semibold tracking-tight text-neutral-900"
           >
             {variant
               ? formatPrice(variant.price.amount, variant.price.currencyCode)

@@ -18,7 +18,7 @@ export const Typography = {
 
   h1: "text-5xl font-semibold leading-tight font-[family-name:var(--font-roboto-condensed)]",
 
-  h2: "text-4xl font-extrabold leading-tight font-[family-name:var(--font-roboto-condensed)]",
+  h2: "text-5xl font-extrabold leading-tight font-[family-name:var(--font-roboto-condensed)]",
 
   h3: "text-2xl font-semibold leading-snug font-[family-name:var(--font-roboto-condensed)]",
 
@@ -41,13 +41,13 @@ export const Typography = {
    * =========================== */
 
   productTitle:
-    "text-base font-bold  text-neutral-900",
+    "text-base font-bold",
 
   productSubtitle:
     "text-sm text-neutral-500 leading-normal",
 
   productPrice:
-    "text-2xl tracking-tight",
+    "text-xl tracking-tight",
 
   productPriceOld:
     "text-sm text-neutral-400 line-through",
