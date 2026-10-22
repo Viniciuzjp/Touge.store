@@ -4,8 +4,17 @@ export async function POST(req: Request) {
   try {
     const { lineItems } = await req.json();
 
-    if (!lineItems || !lineItems.length) {
+    if (!Array.isArray(lineItems) || !lineItems.length) {
       return NextResponse.json({ error: "Nenhum item fornecido" }, { status: 400 });
+    }
+
+    const isValidLine = (item: unknown): item is { id: string; quantity: number } =>
+      typeof (item as { id?: unknown })?.id === "string" &&
+      Number.isInteger((item as { quantity?: unknown })?.quantity) &&
+      (item as { quantity: number }).quantity > 0;
+
+    if (!lineItems.every(isValidLine)) {
+      return NextResponse.json({ error: "Itens do carrinho inválidos" }, { status: 400 });
     }
 
     const domain = process.env.SHOPIFY_STORE_DOMAIN;
@@ -31,7 +40,7 @@ export async function POST(req: Request) {
       };
     });
 
-    const response = await fetch(`https://${domain}/api/2025-01/graphql.json`, {
+    const response = await fetch(`https://${domain}/api/2026-04/graphql.json`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +48,8 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         query: `
-          mutation cartCreate($lines: [CartLineInput!]!) {
+          mutation cartCreate($lines: [CartLineInput!]!)
+          @inContext(country: BR, language: PT_BR) {
             cartCreate(input: { lines: $lines }) {
               cart {
                 id
@@ -59,7 +69,6 @@ export async function POST(req: Request) {
     });
 
     const data = await response.json();
-    console.log("Shopify Cart Response:", JSON.stringify(data, null, 2));
 
     if (data.errors) {
       console.error("Erros do GraphQL da Shopify:", data.errors);

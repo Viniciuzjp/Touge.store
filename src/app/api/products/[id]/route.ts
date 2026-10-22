@@ -6,7 +6,7 @@ export async function GET(
   try {
     const { id } = await context.params;
     const response = await fetch(
-      `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2024-07/graphql.json`,
+      `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,
       {
         method: "POST",
         headers: {
@@ -29,7 +29,7 @@ export async function GET(
                   name
                   values
                 }
-                variants(first: 10) {
+                variants(first: 100) {
                   edges {
                     node {
                       id

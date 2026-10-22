@@ -21,6 +21,7 @@ export default function ProductPage() {
   const [error, setError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     if (!id) {
@@ -30,7 +31,9 @@ export default function ProductPage() {
 
     async function fetchProduct() {
       try {
-        const response = await fetch(`/api/products/${id}`);
+        // O id é um gid ("gid://shopify/Product/123"); garante que vire um único segmento.
+        const productId = encodeURIComponent(decodeURIComponent(String(id)));
+        const response = await fetch(`/api/products/${productId}`);
 
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
@@ -87,13 +90,17 @@ export default function ProductPage() {
     if (!product || !variant || !variant.availableForSale) return;
 
     AddItem({
-      id: product.id,
+      id: variant.id,
       variantId: variant.id,
       title: product.title,
+      variantTitle: selectableOptions.length > 0 ? variant.title : undefined,
       image: product.images[0],
       price: variant.price.amount,
       currencyCode: variant.price.currencyCode,
     });
+
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   if (error) {
@@ -211,7 +218,9 @@ export default function ProductPage() {
                 >
                   {variant && !variant.availableForSale
                     ? "ESGOTADO"
-                    : "ADICIONAR AO CARRINHO"}
+                    : added
+                      ? "ADICIONADO AO CARRINHO ✓"
+                      : "ADICIONAR AO CARRINHO"}
                 </Button>
 
                 <Text variant="h2">ESPECIFICAÇÕES</Text>

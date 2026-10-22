@@ -77,6 +77,8 @@ export async function getProducts(
       `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,
       {
         method: "POST",
+        // Revalida o catálogo a cada 5 min (sem isso as páginas ficam congeladas no build).
+        next: { revalidate: 300 },
         headers: {
           "X-Shopify-Storefront-Access-Token":
             process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN!,
@@ -110,7 +112,7 @@ export async function getProducts(
                     name
                     values
                   }
-                  variants(first: 10) {
+                  variants(first: 100) {
                     edges {
                       node {
                         id
@@ -178,6 +180,8 @@ export async function getCollectionByHandle(
       `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,
       {
         method: "POST",
+        // Revalida o catálogo a cada 5 min (sem isso as páginas ficam congeladas no build).
+        next: { revalidate: 300 },
         headers: {
           "X-Shopify-Storefront-Access-Token":
             process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN!,
@@ -211,7 +215,7 @@ export async function getCollectionByHandle(
                       name
                       values
                     }
-                    variants(first: 10) {
+                    variants(first: 100) {
                       edges {
                         node {
                           id

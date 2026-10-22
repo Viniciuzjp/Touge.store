@@ -5,8 +5,12 @@ import { Heart, ShoppingCart, User, Wallet } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Dropdown from "@/components/dropdown/Dropdown";
+import { useCart } from "@/app/Cart/ui/CartContext/Context";
 
 export default function Header() {
+  const { cart } = useCart();
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <>
       <header className="sticky top-0 w-full z-10 px-5 py-4 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200">
@@ -38,8 +42,13 @@ export default function Header() {
             <Link href="/wishlist" className="hidden">
               <Heart className="h-5 w-5 text-gray-700" />
             </Link>
-            <Link href="/Cart">
+            <Link href="/Cart" aria-label={`Carrinho (${itemCount} itens)`} className="relative">
               <ShoppingCart className="h-5 w-5 text-gray-700" />
+              {itemCount > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-neutral-900 px-1 text-[10px] font-semibold leading-none text-white">
+                  {itemCount}
+                </span>
+              )}
             </Link>
             <a href="https://shopify.com/78258995418/account/profile">
               <User className="h-5 w-5 text-gray-700" />

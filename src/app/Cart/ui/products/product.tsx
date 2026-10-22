@@ -63,6 +63,11 @@ export default function CartProduct() {
                 <Text variant="bodyLg" classname="line-clamp-2 break-words">
                   {p.title}
                 </Text>
+                {p.variantTitle && (
+                  <Text variant="bodySm" classname="uppercase text-neutral-500">
+                    {p.variantTitle}
+                  </Text>
+                )}
                 <Text variant="body" classname="text-neutral-600">
                   {formatPrice(p.price, p.currencyCode)}
                 </Text>

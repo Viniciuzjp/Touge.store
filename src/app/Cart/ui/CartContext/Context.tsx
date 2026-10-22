@@ -10,9 +10,11 @@ interface ImageType {
 }
 
 interface CartItem {
+  // Uma linha por variante: "id" é o id da variante, para tamanhos não se misturarem.
   id: string
   variantId: string
   title: string
+  variantTitle?: string
   image: ImageType
   price: string
   currencyCode: string
