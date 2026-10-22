@@ -32,6 +32,24 @@
   --av-space-xl: 2rem; /* 20px */
   --av-space-6: 1.5rem;  /* 24px */
 
+  /* Headings */
+  --heading-font: var(--font-roboto-condensed), sans-serif;
+  --heading-weight: 600;
+  --color-heading: #242424;
+
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--heading-font);
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: var(--heading-weight, 600);
+    color: var(--color-heading);
+  }
 }
 
 @keyframes marquee {

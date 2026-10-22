@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 const robotoCondensed = Roboto_Condensed({
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${inter.variable} ${robotoCondensed.variable}`}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-N8P0DYJMMB"
@@ -46,7 +47,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.className} ${robotoCondensed.variable}`}>
+      <body className={inter.className}>
         <CartProvider>
           <Header />
           {children}

@@ -1,111 +1,97 @@
+/*
+ * BASE
+ */
+
+const heading = "font-heading text-(--color-heading) text-balance";
+
+const sans = "font-sans font-normal";
+
 export const Typography = {
-  /* ===========================
+  /*
    * DISPLAY
-   * =========================== */
+   */
 
-  displayLg:
-    "text-6xl font-semibold leading-none tracking-tight font-[family-name:var(--font-roboto-condensed)]",
+  displayLg: `${heading} text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight`,
 
-  displayMd:
-    "text-5xl font-semibold leading-tight tracking-tight font-[family-name:var(--font-roboto-condensed)]",
+  displayMd: `${heading} text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight`,
 
-  displaySm:
-    "text-4xl font-semibold leading-tight font-[family-name:var(--font-roboto-condensed)]",
+  displaySm: `${heading} text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight`,
 
-  /* ===========================
+  /*
    * HEADINGS
-   * =========================== */
+   */
 
-  h1: "text-5xl font-semibold leading-tight font-[family-name:var(--font-roboto-condensed)]",
+  h1: `${heading} text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight`,
 
-  h2: "text-5xl font-extrabold leading-tight font-[family-name:var(--font-roboto-condensed)]",
+  h2: `${heading} text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight tracking-tight`,
 
-  h3: "text-2xl font-semibold leading-snug font-[family-name:var(--font-roboto-condensed)]",
+  h3: `${heading} text-xl md:text-2xl font-semibold leading-snug`,
 
-  h4: "text-xl font-semibold leading-snug font-[family-name:var(--font-roboto-condensed)]",
+  h4: `${heading} text-lg md:text-xl font-semibold leading-snug`,
 
-  /* ===========================
+  /*
    * BODY
-   * =========================== */
+   */
 
-  bodyLg: "text-lg leading-relaxed",
+  bodyLg: `${sans} text-lg leading-relaxed`,
 
-  body: "text-base leading-relaxed",
+  body: `${sans} text-base leading-relaxed`,
 
-  bodySm: "text-sm leading-relaxed",
+  bodySm: `${sans} text-sm leading-relaxed`,
 
-  bodyXs: "text-xs leading-normal",
+  bodyXs: `${sans} text-xs leading-normal`,
 
-  /* ===========================
+  /*
    * PRODUCT
-   * =========================== */
+   */
 
-  productTitle:
-    "text-base font-bold",
+  productTitle: `${sans} text-sm md:text-base font-medium leading-snug line-clamp-2`,
 
-  productSubtitle:
-    "text-sm text-neutral-500 leading-normal",
+  productSubtitle: `${sans} text-sm leading-normal text-neutral-500`,
 
-  productPrice:
-    "text-xl tracking-tight",
+  productPrice: `${sans} text-base md:text-lg font-semibold tabular-nums tracking-tight`,
 
-  productPriceOld:
-    "text-sm text-neutral-400 line-through",
+  productPriceOld: `${sans} text-sm tabular-nums text-neutral-400 line-through`,
 
-  productInstallment:
-    "text-sm text-green-700",
+  productInstallment: `${sans} text-xs md:text-sm tabular-nums text-green-700`,
 
-  /* ===========================
+  /*
    * UI
-   * =========================== */
+   */
 
-  label:
-    "text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500",
+  label: `${sans} text-xs font-semibold uppercase tracking-wider text-neutral-500`,
 
-  overline:
-    "text-xs uppercase tracking-[0.25em] font-semibold text-neutral-500",
+  overline: `${sans} text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500`,
 
-  button:
-    "text-sm font-medium",
+  button: `${sans} text-sm font-semibold tracking-wide`,
 
-  link:
-    "text-sm font-medium",
+  link: `${sans} text-sm font-medium underline-offset-4 hover:underline`,
 
-  input:
-    "text-sm",
+  input: `${sans} text-base md:text-sm`,
 
-  helper:
-    "text-xs text-neutral-500",
+  helper: `${sans} text-xs leading-normal text-neutral-500`,
 
-  caption:
-    "text-xs text-neutral-400",
+  caption: `${sans} text-xs leading-normal text-neutral-400`,
 
-  badge:
-    "text-xs font-semibold uppercase tracking-wide",
+  badge: `${sans} text-[11px] font-semibold uppercase tracking-wider leading-none`,
 
-  /* ===========================
+  /*
    * STATUS
-   * =========================== */
+   */
 
-  success:
-    "text-sm font-medium text-green-700",
+  success: `${sans} text-sm font-medium text-green-700`,
 
-  warning:
-    "text-sm font-medium text-yellow-700",
+  warning: `${sans} text-sm font-medium text-amber-700`,
 
-  danger:
-    "text-sm font-medium text-red-700",
+  danger: `${sans} text-sm font-medium text-red-700`,
 
-  /* ===========================
+  /*
    * NAVIGATION
-   * =========================== */
+   */
 
-  navbar:
-    "text-sm font-medium",
+  navbar: `${sans} text-sm font-medium tracking-wide`,
 
-  menu:
-    "text-sm font-medium",
+  menu: `${sans} text-sm font-medium`,
 
-  footer:
-    "text-sm text-neutral-500",
+  footer: `${sans} text-sm leading-relaxed text-neutral-500`,
 };
