@@ -164,6 +164,53 @@ export async function getProducts(
   }
 }
 
+export async function getProductById(
+  id: string,
+  { revalidate }: { revalidate: number | false } = { revalidate: false }
+): Promise<Product | null> {
+  const response = await fetch(
+    `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,
+    {
+      method: "POST",
+      ...(revalidate === false ? { cache: "no-store" as const } : { next: { revalidate } }),
+      headers: {
+        "X-Shopify-Storefront-Access-Token": process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN!,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `
+          query getProduct($id: ID!) {
+            product(id: $id) {
+              id handle title descriptionHtml
+              images(first: 5) { edges { node { src altText width height } } }
+              options { name values }
+              variants(first: 100) {
+                edges { node { id title price { amount currencyCode } availableForSale selectedOptions { name value } } }
+              }
+            }
+          }
+        `,
+        variables: { id },
+      }),
+    }
+  );
+
+  if (!response.ok) throw new Error(`Shopify respondeu ${response.status}`);
+
+  const node: ProductEdge["node"] | null = (await response.json())?.data?.product ?? null;
+  if (!node) return null;
+
+  return {
+    id: node.id,
+    handle: node.handle,
+    title: node.title,
+    descriptionHtml: node.descriptionHtml || "",
+    images: node.images.edges.map((img) => img.node),
+    variants: node.variants.edges.map((v) => v.node),
+    options: node.options,
+  };
+}
+
 export interface Collection {
   id: string;
   handle: string;
